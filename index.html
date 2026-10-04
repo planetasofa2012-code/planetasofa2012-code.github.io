@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo-tag.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png" />
+    <!-- viewport-fit=cover — учёт «чёлки» и safe-area на iPhone -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="theme-color" content="#E8641B" />
+    <!-- iOS: standalone-режим и статус-бар -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Мой скидос" />
+    <meta
+      name="description"
+      content="Скидочные и бонусные карты. Работает офлайн, без рекламы и регистрации."
+    />
+    <title>Мой скидос</title>
+    <!-- Тема применяется до первой отрисовки, чтобы не было вспышки светлого фона.
+         Та же логика — в src/app/theme.ts (ключ skidos-theme: light | dark | system). -->
+    <script>
+      (function () {
+        try {
+          var mode = localStorage.getItem('skidos-theme');
+          var dark =
+            mode === 'dark' ||
+            (mode !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+          if (dark) {
+            document
+              .querySelector('meta[name="theme-color"]')
+              .setAttribute('content', '#16120F');
+          }
+        } catch (e) {
+          /* хранилище недоступно — остаётся светлая тема */
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="/assets/index-mPw3y6wZ.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BFe1ijsT.css">
+  <link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
